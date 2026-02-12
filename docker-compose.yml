@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - sqli-labs-net
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: security
+    volumes:
+      - ./sql-lab.sql:/docker-entrypoint-initdb.d/sql-lab.sql
+      - mysql-data:/var/lib/mysql
+    networks:
+      - sqli-labs-net
+
+networks:
+  sqli-labs-net:
+    driver: bridge
+
+volumes:
+  mysql-data:

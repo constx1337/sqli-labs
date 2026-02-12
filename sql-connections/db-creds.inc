@@ -1,13 +1,8 @@
 <?php
-
-//give your mysql connection username n password
+// Docker environment database credentials
 $dbuser ='root';
-$dbpass ='';
+$dbpass ='root';
 $dbname ="security";
-$host = 'localhost';
+$host = 'db';
 $dbname1 = "challenges";
-
-
-
 ?>
-
